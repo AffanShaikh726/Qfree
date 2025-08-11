@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 border-t border-gray-200 text-white">
       <div className="container px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -32,16 +32,17 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support 
+          {/* Legal Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold">Support</h3>
+            <h3 className="font-semibold">Legal</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors duration-200">Help Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200">Contact Support</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200">Terms of Service</a></li>
+              <li><a href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-white transition-colors duration-200">Terms & Conditions</a></li>
+              <li><a href="/cancellation" className="hover:text-white transition-colors duration-200">Cancellation & Refund</a></li>
+              <li><a href="/shipping" className="hover:text-white transition-colors duration-200">Shipping & Delivery</a></li>
+              <li><a href="/contact" className="hover:text-white transition-colors duration-200">Contact Us</a></li>
             </ul>
-          </div>*/}
+          </div>
 
           {/* Contact */}
           <div className="space-y-4" id="contact">
