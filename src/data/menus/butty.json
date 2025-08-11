@@ -1,0 +1,77 @@
+{
+    "restaurant": "Butty - The Food Paradise",
+    "cuisines": [
+        "Indian",
+        "Chinese",
+        "Tandoor",
+        "Kabab Rolls",
+        "Arabian Bites",
+        "BBQ",
+        "Momos"
+    ],
+    "Biriyani": {
+        "Chicken Biriyani": 100,
+        "Spl Chicken Biriyani": 120,
+        "Lollipop Biriyani": 130,
+        "Mughal Biriyani": 130,
+        "Hydrabadi Biriyani": 120,
+        "Fish Biriyani": 130,
+        "Prawn Biriyani": 130,
+        "Egg Biriyani": 90,
+        "Kuska": 80,
+        "Veg Biriyani": 80,
+        "Paneer Biriyani": 90,
+        "Mushroom Biriyani": 90
+    },
+    "Rice / Noodles / Pasta": {
+        "Veg Fried Rice / Noodles / Pasta": 70,
+        "Egg Fried Rice / Noodles / Pasta": 80,
+        "Chicken Fried Rice / Noodles / Pasta": 90,
+        "Paneer Fried Rice / Noodles / Pasta": 90,
+        "Mushroom Fried Rice / Noodles / Pasta": 80,
+        "Gobi Fried Rice / Noodles / Pasta": 80,
+        "Spl Mixed Veg Rice / Noodles / Pasta": 100,
+        "Spl Mixed Non-Veg Rice / Noodles / Pasta": 120
+    },
+    "Add on": {
+        "Schezwan": 10,
+        "Egg": 10,
+        "Butter": 20
+    },
+    "Veg Starter's": {
+        "(Dry or Gravy)": 80,
+        "Chilly Veg": 80,
+        "Garlic Veg": 80,
+        "Gobi 65": 80,
+        "Gobi Manchrian": 80,
+        "Chilly Gobi": 80,
+        "Ginger Gobi": 80,
+        "Paneer Gobi": 90,
+        "Chilly Paneer": 90,
+        "Ginger Paneer": 90,
+        "Garlic Paneer": 90,
+        "Mushroom 65": 90,
+        "Chilly Mushroom": 90,
+        "Mushroom Manchrian": 90,
+        "Ginger Mushroom": 90,
+        "Garlic Mushroom": 90,
+        "Baby Corn Manchrian": 90,
+        "Chilly Baby Corn": 90
+    },
+    "Non-Veg Starter's": {
+        "Chicken 65 (6Pcs)": 90,
+        "Chicken Lollipop (5Pcs)": 110,
+        "Chicken Drum Stick (5Pcs)": 120,
+        "Chilly Chicken": 100,
+        "Chicken Munchurian": 100,
+        "Dragon Chicken": 120,
+        "Ginger Chicken": 100,
+        "Garlic Chicken": 120,
+        "Pepper Chicken": 130,
+        "Butter Chicken": 130,
+        "Malai Chicken": 130,
+        "Lemon Chicken": 120,
+        "Chilly Egg": 80,
+        "Egg Munchurian": 80
+    }
+}
