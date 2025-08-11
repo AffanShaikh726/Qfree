@@ -90,7 +90,7 @@ const HowItWorks = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        {/* <div className="text-center mt-16">
           <Button 
             variant="primary" 
             size="lg" 
@@ -100,7 +100,7 @@ const HowItWorks = () => {
           >
             Start Ordering Now
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

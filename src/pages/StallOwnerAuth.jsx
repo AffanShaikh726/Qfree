@@ -64,24 +64,34 @@ const StallOwnerAuth = () => {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      // First, sign in with email and password
+      const { data: authData, error: signInError } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
 
-      if (error) throw error;
+      if (signInError) throw signInError;
 
-      // Check user role before redirecting
-      if (data.user?.user_metadata?.role !== "stall_owner") {
+      // Get the user's full profile to check the role
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      
+      if (userError) throw userError;
+
+      // Check user role in both user_metadata and app_metadata
+      const userRole = user?.user_metadata?.role || user?.app_metadata?.role;
+      
+      if (userRole !== "stall_owner") {
         await supabase.auth.signOut();
-        throw new Error("This portal is for stall owners only");
+        throw new Error("Access denied. This portal is for registered stall owners only.");
       }
 
+      // If we get here, the user is authenticated and authorized
       router.push("/stall-portal");
     } catch (error) {
+      console.error('Login error:', error);
       showToast({
-        title: "Error",
-        description: error.message,
+        title: "Login Failed",
+        description: error.message || "Failed to sign in. Please check your credentials and try again.",
         type: "error"
       });
     } finally {

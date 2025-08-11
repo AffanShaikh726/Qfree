@@ -24,7 +24,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 variant="primary" 
                 size="lg" 
@@ -41,7 +41,7 @@ const Hero = () => {
               >
                 Watch Demo
               </Button>
-            </div>
+            </div> */}
 
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center space-y-2">

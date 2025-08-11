@@ -17,12 +17,12 @@ const StallRegistration = ({ onRegistrationComplete, userEmail }) => {
     operating_days: []
   });
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState<{
-    visible,
-    message,
-    description,
-    type
-  } | null>(null);
+  const [toast, setToast] = useState({
+    visible: false,
+    message: '',
+    description: '',
+    type: ''
+  });
 
   const daysOfWeek = [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
