@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {displayYear} QueueFree. All rights reserved with monish. | For SRM STUDENTS Exclusively available</p>
+          <p>&copy; {displayYear} QueueFree. All rights reserved with monish. | For SRM STUDENTS Exclusively available | Developed by <a href="https://github.com/AffanShaikh726">Affan Shaikh</a> and Monish</p>
         </div>
       </div>
     </footer>
