@@ -5,7 +5,7 @@ const AuthCard = ({ title, description, children }) => {
                 <div className="d-flex justify-content-center">
                     <img
                         src="/logo.png"
-                        alt="QueueFree Logo"
+                        alt="Qfree Logo"
                         height="80px"
                         width="80px"
                     />

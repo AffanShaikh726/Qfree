@@ -79,7 +79,10 @@ const Features = () => {
     ];
 
     return (
-        <section id="features" className="py-20 bg-[#ffd500]">
+        <section
+            id="features"
+            className="mx-auto max-w-7xl py-20 bg-[##fdf0d5]"
+        >
             <div className="container px-4">
                 <div className="text-center space-y-4 mb-16">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900">
@@ -90,7 +93,7 @@ const Features = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        QueueFree brings together students, stall owners, and
+                        Qfree brings together students, stall owners, and
                         technology to create the ultimate college dining
                         experience.
                     </p>

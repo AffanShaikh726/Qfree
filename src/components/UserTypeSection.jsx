@@ -71,7 +71,7 @@ const UserTypeSection = () => {
     ];
 
     return (
-        <section className="py-20 bg-[#ffd500]">
+        <section className="mx-auto max-w-7xl py-20 bg-[#fdf0d5]">
             <div className="container px-4">
                 <div className="text-center space-y-4 mb-16">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900">

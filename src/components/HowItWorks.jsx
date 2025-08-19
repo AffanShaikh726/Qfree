@@ -48,13 +48,16 @@ const HowItWorks = () => {
     ];
 
     return (
-        <section id="how-it-works" className="py-20 bg-[#ffd500]">
+        <section
+            id="how-it-works"
+            className="mx-auto max-w-7xl py-20 bg-[#fdf0d5]"
+        >
             <div className="container px-4">
                 <div className="text-center space-y-4 mb-16">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900">
                         How{" "}
-                        <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-                            QueueFree
+                        <span className="bg-gradient-to-l from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                            Qfree
                         </span>{" "}
                         Works
                     </h2>

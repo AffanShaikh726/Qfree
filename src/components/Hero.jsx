@@ -5,22 +5,22 @@ import heroImage from "$/assets/hero-canteen.jpg";
 
 const Hero = () => {
     return (
-        <section className="relative overflow-hidden bg-[#ffd500]">
+        <section className="mx-auto relative overflow-hidden bg-[#fdf0d5] max-w-7xl">
             <div className="container px-4 py-20">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
                     <div className="space-y-8">
                         <div className="space-y-4">
                             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                                 Skip the{" "}
-                                <span className="bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-l from-primary-600 via-blue-500 to-blue-600 bg-clip-text text-transparent whitespace-nowrap pr-1">
                                     Queue
                                 </span>
                                 <br />
                                 Order Smart
                             </h1>
                             <p className="text-xl text-gray-700 max-w-[600px]">
-                                Pre-order meals and skip the line — QueueFree
-                                makes college dining easy.
+                                Pre-order meals and skip the line — Qfree makes
+                                college dining easy.
                             </p>
                             <Button
                                 variant="primary"
@@ -35,25 +35,6 @@ const Hero = () => {
                                 Order Now
                             </Button>
                         </div>
-
-                        {/* <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                variant="primary" 
-                size="lg" 
-                className="text-lg px-8"
-                icon={ArrowRight}
-                iconPosition="right"
-              >
-                Get Started
-              </Button>
-              <Button 
-                variant="secondary" 
-                size="lg" 
-                className="text-lg px-8"
-              >
-                Watch Demo
-              </Button>
-            </div> */}
 
                         <div className="grid grid-cols-3 gap-6 pt-8">
                             <div className="text-center space-y-2">
