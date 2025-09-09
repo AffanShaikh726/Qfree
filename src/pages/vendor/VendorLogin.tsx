@@ -42,7 +42,7 @@ const VendorLogin = () => {
 
         <Card className="animate-scale-in">
           <CardHeader className="text-center space-y-2">
-            <div className="w-16 h-16 rounded-full bg-hero-gradient flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 flex items-center justify-center mx-auto">
               <Store className="w-8 h-8 text-white" />
             </div>
             <CardTitle className="text-2xl">Vendor Portal</CardTitle>
@@ -81,7 +81,10 @@ const VendorLogin = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" variant="hero">
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-600 hover:to-amber-500 text-white font-bold"
+                  >
                     Sign In
                   </Button>
                 </form>
@@ -144,7 +147,10 @@ const VendorLogin = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" variant="hero">
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-600 hover:to-amber-500 text-white font-bold"
+                  >
                     Create Vendor Account
                   </Button>
                 </form>

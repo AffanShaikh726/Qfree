@@ -86,7 +86,11 @@ const Header = () => {
               </Button>
             </Link>
             <Link to="/vendor-login">
-              <Button variant="default" className="font-bold text-white bg-orange-500 hover:bg-orange-600" size="sm">
+              <Button 
+                variant="default" 
+                className="font-bold text-white bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-600 hover:to-amber-500" 
+                size="sm"
+              >
                 Vendor
               </Button>
             </Link>
@@ -115,7 +119,11 @@ const Header = () => {
                     </Button>
                   </Link>
                   <Link to="/vendor-login" className="block w-full" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="default" className="font-bold w-full text-white bg-orange-500 hover:bg-orange-600" size="default">
+                    <Button 
+                      variant="default" 
+                      className="font-bold w-full text-white bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-600 hover:to-amber-500" 
+                      size="default"
+                    >
                       Vendor
                     </Button>
                   </Link>

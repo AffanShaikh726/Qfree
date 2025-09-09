@@ -107,7 +107,7 @@ const PortalSection = () => {
                   
                   <Button 
                     variant={portal.buttonVariant} 
-                    className={`w-full font-semibold ${portal.title === "Staff Owners" ? 'text-white bg-orange-500 hover:bg-orange-600' : ''}`}
+                    className={`w-full font-semibold ${portal.title === "Staff Owners" ? 'text-white bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-600 hover:to-amber-500' : ''}`}
                     size="lg"
                     asChild
                   >
