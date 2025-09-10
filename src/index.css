@@ -2,13 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Dark theme design system */
+    /* Darker light theme design system */
+    --background: 0 0% 92%;  /* Even darker white */
+    --foreground: 240 10% 8%;  /* Darker text for better contrast */
+
+    --card: 0 0% 96%;  /* Darker off-white */
+    --card-foreground: 240 10% 8%;  /* Darker text */
+
+    --popover: 0 0% 96%;  /* Darker off-white */
+    --popover-foreground: 240 10% 8%;  /* Darker text */
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 85%;  /* Darker secondary */
+    --secondary-foreground: 240 5.9% 20%;  /* Darker text on secondary */
+
+    --muted: 240 5% 85%;  /* Darker muted */
+    --muted-foreground: 240 3.8% 35%;  /* Darker gray */
+
+    --accent: 271 91% 55%;  /* Darker purple for better visibility */
+    --accent-foreground: 0 0% 98%;  /* Lighter text for better contrast */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 80%;  /* Darker border */
+    --input: 240 5% 85%;  /* Darker input */
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Light theme custom design tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(271 91% 65%) 100%);
+    --card-gradient: linear-gradient(145deg, hsl(0 0% 96%) 0%, hsl(0 0% 92%) 100%);  /* Darker gradient */
+    --text-gradient: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(271 91% 65%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.15);
+    --shadow-card: 0 4px 16px hsl(240 5% 60% / 0.25);  /* Darker shadow */
+  }
+
+  .dark {
+    /* Dark theme design system (unchanged) */
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
@@ -37,20 +74,12 @@ All colors MUST be HSL.
     --input: 240 6% 10%;
     --ring: 217 91% 60%;
 
-    --radius: 0.75rem;
-
-    /* Custom design tokens */
     --hero-gradient: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(271 91% 65%) 100%);
     --card-gradient: linear-gradient(145deg, hsl(240 8% 6%) 0%, hsl(240 6% 10%) 100%);
     --text-gradient: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(271 91% 65%) 100%);
     
-    /* Shadows */
     --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
     --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.4);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }
 

@@ -10,11 +10,19 @@ import VendorLogin from "./pages/vendor/VendorLogin";
 import StudentPortal from "./pages/student/StudentPortal";
 import VendorDashboard from "./pages/vendor/VendorDashboard";
 import AdminPanel from "./pages/AdminPanel";
+import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <ThemeProvider 
+    attribute="class"
+    defaultTheme="light"
+    enableSystem={false}
+    storageKey="theme"
+    disableTransitionOnChange
+    >
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -31,6 +39,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
