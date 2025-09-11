@@ -10,6 +10,11 @@ import VendorLogin from "./pages/vendor/VendorLogin";
 import StudentPortal from "./pages/student/StudentPortal";
 import VendorDashboard from "./pages/vendor/VendorDashboard";
 import AdminPanel from "./pages/AdminPanel";
+import PrivacyPolicy from "./pages/legal/privacypolicy";
+import TermsAndConditions from "./pages/legal/terms";
+import CancellationRefund from "./pages/legal/cancellation-refund";
+import ShippingDelivery from "./pages/legal/shipping-delivery";
+import ContactUs from "./pages/legal/contact";
 import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
@@ -34,6 +39,12 @@ const App = () => (
           <Route path="/student-portal" element={<StudentPortal />} />
           <Route path="/vendor-dashboard" element={<VendorDashboard />} />
           <Route path="/admin-panel" element={<AdminPanel />} />
+          {/* Legal Pages */}
+          <Route path="/legal/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/legal/terms" element={<TermsAndConditions />} />
+          <Route path="/legal/cancellation-refund" element={<CancellationRefund />} />
+          <Route path="/legal/shipping-delivery" element={<ShippingDelivery />} />
+          <Route path="/legal/contact" element={<ContactUs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

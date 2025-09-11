@@ -33,11 +33,11 @@ const Footer = () => {
   ];
 
   const legal = [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms & Conditions", href: "#" },
-    { name: "Cancellation & Refund", href: "#" },
-    { name: "Shipping & Delivery", href: "#" },
-    { name: "Contact Us", href: "#contact" }
+    { name: "Privacy Policy", href: "/legal/privacypolicy" },
+    { name: "Terms & Conditions", href: "/legal/terms" },
+    { name: "Cancellation & Refund", href: "/legal/cancellation-refund" },
+    { name: "Shipping & Delivery", href: "/legal/shipping-delivery" },
+    { name: "Contact Us", href: "/legal/contact" }
   ];
 
   return (
