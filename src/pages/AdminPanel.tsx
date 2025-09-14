@@ -88,157 +88,128 @@ const AdminPanel = () => {
 
   return (
     <div className="min-h-screen bg-background p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+      <div className="max-w-7xl mx-auto space-y-6 px-2 sm:px-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <Link 
               to="/" 
-              className="inline-flex items-center text-muted-foreground hover:text-foreground transition-smooth"
+              className="inline-flex items-center text-muted-foreground hover:text-foreground transition-smooth text-sm sm:text-base"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
+              <ArrowLeft className="w-4 h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Back to Home</span>
             </Link>
+            <div className=" sm:block h-6 w-px bg-border" />
             <div>
-              <h1 className="text-3xl gradient-text">Admin Panel</h1>
-              <p className="text-muted-foreground">System Administrator Dashboard</p>
+              <h1 className="text-2xl sm:text-3xl gradient-text">Admin Panel</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground">System Administrator Dashboard</p>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <Badge variant="secondary" className="flex items-center space-x-1">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <Badge variant="secondary" className="flex items-center space-x-1 text-xs sm:text-sm">
               <Shield className="w-3 h-3" />
               <span>Super Admin</span>
             </Badge>
-            <Button variant="outline" size="sm">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Alerts ({pendingVendors.length})
+            <Button variant="outline" size="sm" className="text-xs sm:text-sm flex-1 sm:flex-none">
+              <AlertTriangle className="w-3 h-3 sm:mr-1" />
+              <span className="hidden sm:inline">Alerts</span> ({pendingVendors.length})
             </Button>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{platformStats.totalUsers}</div>
-              <p className="text-xs text-muted-foreground">+12% this month</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Vendors</CardTitle>
-              <Store className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{platformStats.activeVendors}</div>
-              <p className="text-xs text-muted-foreground">+3 this week</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Orders</CardTitle>
-              <BarChart3 className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{platformStats.totalOrders}</div>
-              <p className="text-xs text-muted-foreground">+8% this week</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">₹{platformStats.totalRevenue.toLocaleString()}</div>
-              <p className="text-xs text-muted-foreground">+15% this month</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Today's Orders</CardTitle>
-              <Activity className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{platformStats.todayOrders}</div>
-              <p className="text-xs text-muted-foreground">Live count</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Pending Approvals</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{platformStats.pendingApprovals}</div>
-              <p className="text-xs text-muted-foreground">Needs review</p>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
+          {[
+            { title: "Total Users", value: platformStats.totalUsers, icon: Users, trend: "+12% this month" },
+            { title: "Active Vendors", value: platformStats.activeVendors, icon: Store, trend: "+3 this week" },
+            { title: "Total Orders", value: platformStats.totalOrders, icon: BarChart3, trend: "+8% this week" },
+            { title: "Total Revenue", value: `₹${platformStats.totalRevenue.toLocaleString()}`, icon: DollarSign, trend: "+15% this month" },
+            { title: "Today's Orders", value: platformStats.todayOrders, icon: Activity, trend: "Live count" },
+            { title: "Pending Approvals", value: platformStats.pendingApprovals, icon: Clock, trend: "Needs review" }
+          ].map((stat, index) => (
+            <Card key={index} className="hover:shadow-md transition-shadow">
+              <CardHeader className="p-3 sm:p-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs sm:text-sm font-medium text-muted-foreground">{stat.title}</p>
+                  <stat.icon className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                </div>
+                <div className="mt-1">
+                  <p className="text-lg sm:text-2xl font-bold">{stat.value}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">{stat.trend}</p>
+                </div>
+              </CardHeader>
+            </Card>
+          ))}
         </div>
 
         <Tabs defaultValue="approvals" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            <TabsTrigger value="approvals">Vendor Approvals</TabsTrigger>
-            <TabsTrigger value="users">User Management</TabsTrigger>
-            <TabsTrigger value="analytics">Platform Analytics</TabsTrigger>
-            <TabsTrigger value="payments">Payment Monitoring</TabsTrigger>
-            <TabsTrigger value="config">System Config</TabsTrigger>
-          </TabsList>
+        <div
+  className="
+    relative w-full overflow-x-auto 
+    scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent
+  "
+  style={{ scrollbarWidth: "thin", msOverflowStyle: "none" }} // Firefox + IE/Edge cleanup
+>
+  <TabsList
+    className="
+      flex w-max gap-2 whitespace-nowrap
+      sm:grid sm:w-full sm:grid-cols-5 sm:gap-2
+    "
+  >
+    <TabsTrigger value="approvals" className="whitespace-nowrap">Vendor Approvals</TabsTrigger>
+    <TabsTrigger value="users" className="whitespace-nowrap">User Management</TabsTrigger>
+    <TabsTrigger value="analytics" className="whitespace-nowrap">Platform Analytics</TabsTrigger>
+    <TabsTrigger value="payments" className="whitespace-nowrap">Payment Monitoring</TabsTrigger>
+    <TabsTrigger value="config" className="whitespace-nowrap">System Config</TabsTrigger>
+  </TabsList>
+</div>
+
           
-          <TabsContent value="approvals" className="space-y-6 mt-6">
+          <TabsContent value="approvals" className="mt-4 sm:mt-6">
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <UserCheck className="w-5 h-5 mr-2" />
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center text-lg sm:text-xl">
+                  <UserCheck className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Pending Vendor Applications
                 </CardTitle>
-                <CardDescription>Review and approve new vendor registrations</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Review and approve new vendor registrations</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="space-y-3">
                   {pendingVendors.map((vendor) => (
-                    <div key={vendor.id} className="flex flex-col lg:flex-row lg:items-center justify-between p-4 border rounded-lg space-y-3 lg:space-y-0">
-                      <div className="flex-1">
-                        <h4 className="font-semibold">{vendor.name}</h4>
-                        <p className="text-sm text-muted-foreground">Owner: {vendor.owner}</p>
-                        <div className="flex flex-wrap items-center gap-2 mt-1">
-                          <span className="text-xs text-muted-foreground">{vendor.cuisine}</span>
-                          <span className="text-xs text-muted-foreground">Applied: {vendor.applied}</span>
-                          <Badge variant={vendor.documents === "Complete" ? "default" : "destructive"} className="text-xs">
+                    <div key={vendor.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 border rounded-lg gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-sm sm:text-base truncate">{vendor.name}</h4>
+                        <p className="text-xs sm:text-sm text-muted-foreground truncate">Owner: {vendor.owner}</p>
+                        <div className="flex flex-wrap items-center gap-1.5 mt-1">
+                          <span className="text-[10px] sm:text-xs text-muted-foreground">{vendor.cuisine}</span>
+                          <span className="text-[10px] sm:text-xs text-muted-foreground">• Applied: {vendor.applied}</span>
+                          <Badge variant={vendor.documents === "Complete" ? "default" : "destructive"} className="text-[10px] sm:text-xs h-5">
                             {vendor.documents} Documents
                           </Badge>
                         </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <Button size="sm" variant="outline" className="flex-1 sm:flex-none">
-                          <Eye className="w-3 h-3 mr-1" />
-                          Review
+                      <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
+                        <Button size="sm" variant="outline" className="text-xs sm:text-sm h-8 sm:h-9 flex-1 sm:flex-none">
+                          <Eye className="w-3 h-3 sm:mr-1" />
+                          <span className="hidden sm:inline">Review</span>
                         </Button>
                         <Button 
                           size="sm" 
                           variant="default"
                           onClick={() => approveVendor(vendor.id)}
-                          className="flex-1 sm:flex-none"
+                          className="h-8 sm:h-9 flex-1 sm:flex-none"
                         >
-                          <CheckCircle className="w-3 h-3 mr-1" />
-                          Approve
+                          <CheckCircle className="w-3 h-3 sm:mr-1" />
+                          <span className="hidden sm:inline">Approve</span>
                         </Button>
                         <Button 
                           size="sm" 
                           variant="destructive"
                           onClick={() => rejectVendor(vendor.id)}
-                          className="flex-1 sm:flex-none"
+                          className="h-8 sm:h-9 flex-1 sm:flex-none"
                         >
-                          <XCircle className="w-3 h-3 mr-1" />
-                          Reject
+                          <XCircle className="w-3 h-3 sm:mr-1" />
+                          <span className="hidden sm:inline">Reject</span>
                         </Button>
                       </div>
                     </div>
