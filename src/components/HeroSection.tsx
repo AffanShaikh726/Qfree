@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Clock, CreditCard, Link, MapPin } from "lucide-react";
 import { Link as RouterLink } from "react-router-dom";
+import heroImage from "./photos/Front page Hero Section.jpg";
 
 const HeroSection = () => {
   return (
@@ -84,23 +85,19 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Visual */}
+          {/* Right Visual - Hero Image */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-card bg-card/50 backdrop-blur-sm p-12 flex items-center justify-center min-h-[400px]">
-              <div className="absolute top-6 right-6 bg-card/90 backdrop-blur-sm rounded-lg p-3">
-                <span className="text-sm font-medium text-primary">Order Ready!</span>
-              </div>
-              <div className="text-center space-y-6">
-                <div className="w-32 h-32 mx-auto bg-primary/20 rounded-full flex items-center justify-center">
-                  <span className="text-4xl">🍽️</span>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 hover:scale-105 transition-transform duration-300">
+              <img 
+                src={heroImage} 
+                alt="Students enjoying food with Qfree" 
+                className="w-full h-auto max-h-[500px] object-cover"
+              />
+              <div className="absolute bottom-6 left-6 bg-background/80 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-border/50">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  <span>Save up to 30 minutes per meal</span>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-bold">Your Food Awaits</h3>
-                  <p className="text-muted-foreground">Skip the queue, grab your meal</p>
-                </div>
-              </div>
-              <div className="absolute bottom-6 left-6 bg-card/90 backdrop-blur-sm rounded-lg p-3">
-                <span className="text-sm font-medium text-primary">5 min pickup</span>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import logo from "./photos/Logo.jpg";
 
 const Footer = () => {
   const location = useLocation();
@@ -47,9 +48,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-hero-gradient flex items-center justify-center shadow-glow">
-                <span className="text-white font-bold text-xl">Q</span>
-              </div>
+              <img 
+                src={logo} 
+                alt="Qfree Logo" 
+                className="w-12 h-12 rounded-lg object-cover shadow-glow"
+              />
               <span className="text-3xl tracking-tight font-lobster-two">Qfree</span>
             </div>
             <p className="text-muted-foreground leading-relaxed">

@@ -1,163 +1,79 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+// src/pages/legal/PrivacyPolicy.tsx
 
-export default function PrivacyPolicy() {
+import React from "react";
+
+const PrivacyPolicy: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <Card className="shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center mb-2">Privacy Policy</CardTitle>
-          <p className="text-center text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-        </CardHeader>
-        
-        <CardContent className="space-y-6">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
-            <p className="mb-4">
-              Welcome to <strong>QFree</strong>. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application. Please read this policy carefully to understand our practices regarding your personal data.
-            </p>
-          </section>
+    <div className="max-w-4xl mx-auto p-6 text-gray-800">
+      <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
+      <p className="mb-4">
+        Welcome to <span className="font-semibold">QueueFree</span>. Your
+        privacy is important to us. This Privacy Policy explains how we collect,
+        use, and protect your personal information when you use our app.
+      </p>
 
-          <Separator />
+      <h2 className="text-xl font-semibold mt-6 mb-2">1. Information We Collect</h2>
+      <ul className="list-disc list-inside mb-4">
+        <li>
+          <strong>Account Information:</strong> Name, email, and phone number
+          when you sign up.
+        </li>
+        <li>
+          <strong>Order Details:</strong> Items you order, payment method, and
+          transaction history.
+        </li>
+        <li>
+          <strong>Usage Data:</strong> App usage, device info, and logs for
+          improving our services.
+        </li>
+      </ul>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">2. Information We Collect</h2>
-            <h3 className="text-lg font-medium mb-2">Personal Data</h3>
-            <p className="mb-4">
-              We may collect personal information that can be used to identify you, including but not limited to:
-            </p>
-            <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Name and contact information (email, phone number)</li>
-              <li>Account credentials</li>
-              <li>Payment information (processed securely through Google Pay)</li>
-              <li>Profile information you choose to provide</li>
-            </ul>
+      <h2 className="text-xl font-semibold mt-6 mb-2">2. How We Use Your Information</h2>
+      <p className="mb-4">
+        We use the collected information to:
+      </p>
+      <ul className="list-disc list-inside mb-4">
+        <li>Provide and manage your food orders.</li>
+        <li>Improve app performance and user experience.</li>
+        <li>Send important updates about your orders or the app.</li>
+        <li>Ensure security and prevent fraud.</li>
+      </ul>
 
-            <h3 className="text-lg font-medium mb-2 mt-6">Non-Personal Data</h3>
-            <p>We automatically collect certain information when you use our app, including:</p>
-            <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Device information (type, model, operating system)</li>
-              <li>Usage data and analytics</li>
-              <li>IP address and mobile network information</li>
-              <li>Cookies and similar tracking technologies</li>
-            </ul>
-          </section>
+      <h2 className="text-xl font-semibold mt-6 mb-2">3. Sharing of Information</h2>
+      <p className="mb-4">
+        We do not sell or rent your personal data. Information may be shared
+        only with:
+      </p>
+      <ul className="list-disc list-inside mb-4">
+        <li>Canteen staff for processing your orders.</li>
+        <li>Service providers (like payment gateways) to complete transactions.</li>
+        <li>Legal authorities if required by law.</li>
+      </ul>
 
-          <Separator />
+      <h2 className="text-xl font-semibold mt-6 mb-2">4. Data Security</h2>
+      <p className="mb-4">
+        We use reasonable technical and organizational measures to protect your
+        information. However, no method of transmission over the internet is
+        100% secure.
+      </p>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">3. How We Use Your Information</h2>
-            <p className="mb-4">We use the information we collect to:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Provide, maintain, and improve our services</li>
-              <li>Process transactions and send related information</li>
-              <li>Respond to your comments, questions, and requests</li>
-              <li>Send you technical notices, updates, and support messages</li>
-              <li>Monitor and analyze trends, usage, and activities</li>
-              <li>Detect, investigate, and prevent fraudulent transactions</li>
-              <li>Comply with legal obligations</li>
-            </ul>
-          </section>
+      <h2 className="text-xl font-semibold mt-6 mb-2">5. Your Rights</h2>
+      <p className="mb-4">
+        You may request to access, update, or delete your personal data by
+        contacting us at <span className="font-semibold">support@queuefree.app</span>.
+      </p>
 
-          <Separator />
+      <h2 className="text-xl font-semibold mt-6 mb-2">6. Updates to This Policy</h2>
+      <p className="mb-4">
+        We may update this Privacy Policy from time to time. Any changes will be
+        posted in the app with the updated date.
+      </p>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">4. Data Sharing and Disclosure</h2>
-            <p className="mb-4">We may share your information with:</p>
-            <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Service providers who perform services on our behalf</li>
-              <li>Payment processors (Google Pay) for transaction processing</li>
-              <li>Analytics providers to understand usage patterns</li>
-              <li>When required by law or to protect rights and safety</li>
-            </ul>
-            <p>
-              We do not sell your personal information to third parties.
-            </p>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">5. Payment Processing</h2>
-            <p>
-              All payments are processed through Google Pay. We do not store your payment card details on our servers. 
-              Google Pay handles all payment information in accordance with their privacy policy and security standards.
-            </p>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">6. Data Security</h2>
-            <p className="mb-4">We implement appropriate security measures to protect your information, including:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Encryption of data in transit and at rest</li>
-              <li>Regular security assessments and updates</li>
-              <li>Restricted access to personal information</li>
-              <li>Secure server infrastructure</li>
-            </ul>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">7. Your Rights</h2>
-            <p className="mb-4">You have the right to:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Access and receive a copy of your personal data</li>
-              <li>Rectify any personal information that is inaccurate</li>
-              <li>Request deletion of your personal data</li>
-              <li>Withdraw consent at any time</li>
-              <li>Lodge a complaint with a supervisory authority</li>
-            </ul>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">8. Cookies and Tracking</h2>
-            <p>
-              We use cookies and similar tracking technologies to track activity on our app and hold certain information. 
-              You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
-            </p>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">9. Children's Privacy</h2>
-            <p>
-              Our app is not intended for children under 16 years of age. We do not knowingly collect personal information 
-              from children under 16. If we learn we have collected personal information from a child under 16, 
-              we will delete that information as soon as possible.
-            </p>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">10. Changes to This Policy</h2>
-            <p>
-              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new 
-              Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy 
-              Policy periodically for any changes.
-            </p>
-          </section>
-
-          <Separator />
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">11. Contact Us</h2>
-            <p>
-              If you have any questions about this Privacy Policy, please contact us at:
-            </p>
-            <p className="mt-2 font-medium">
-              Email: support@qfreeapp.com
-            </p>
-          </section>
-        </CardContent>
-      </Card>
+      <p className="mt-8 text-sm text-gray-600">
+        Last updated: {new Date().toLocaleDateString()}
+      </p>
     </div>
   );
-}
+};
+
+export default PrivacyPolicy;

@@ -1,242 +1,175 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "react-router-dom";
-import { 
-  ArrowLeft, 
-  Clock, 
-  CreditCard, 
-  QrCode, 
-  History, 
+import {
+  Home,
+  History,
   ShoppingCart,
-  Star,
+  User,
   MapPin,
-  Timer,
-  Plus
+  QrCode,
+  Utensils,
 } from "lucide-react";
 
 const StudentPortal = () => {
-  const [cart, setCart] = useState([
-    { id: 1, item: "Chicken Biryani", stall: "Spice Corner", price: 120, quantity: 1 },
-    { id: 2, item: "Masala Dosa", stall: "South Indian Express", price: 80, quantity: 2 }
-  ]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const orderHistory = [
-    { id: 1, items: "Chicken Biryani, Lassi", total: 150, status: "Completed", date: "Today, 1:30 PM", stall: "Spice Corner" },
-    { id: 2, items: "Masala Dosa x2", total: 160, status: "Completed", date: "Yesterday, 12:45 PM", stall: "South Indian Express" },
-    { id: 3, items: "Paneer Roll, Cold Coffee", total: 110, status: "Cancelled", date: "2 days ago", stall: "Quick Bites" }
-  ];
+  // Determine active tab based on current path
+  const getActiveTab = () => {
+    const path = location.pathname;
+    if (path === "/student" || path === "/student/" || path.startsWith("/student/home"))
+      return "home";
+    if (path.startsWith("/student/restaurant")) return "restaurant";
+    if (path.startsWith("/student/cart")) return "cart";
+    if (path.startsWith("/student/orders")) return "orders";
+    if (path.startsWith("/student/history")) return "history";
+    if (path.startsWith("/student/profile")) return "profile";
+    return "";
+  };
 
-  const stalls = [
-    { 
-      name: "Spice Corner", 
-      cuisine: "North Indian", 
-      rating: 4.5, 
-      estimatedTime: "15-20 min",
-      popular: ["Chicken Biryani ₹120", "Mutton Curry ₹140", "Garlic Naan ₹30"]
-    },
-    { 
-      name: "South Indian Express", 
-      cuisine: "South Indian", 
-      rating: 4.3, 
-      estimatedTime: "10-15 min",
-      popular: ["Masala Dosa ₹80", "Idli Sambhar ₹60", "Filter Coffee ₹25"]
-    },
-    { 
-      name: "Quick Bites", 
-      cuisine: "Fast Food", 
-      rating: 4.0, 
-      estimatedTime: "5-10 min",
-      popular: ["Paneer Roll ₹70", "Veg Burger ₹50", "Cold Coffee ₹40"]
+  const [activeTab, setActiveTab] = useState(getActiveTab());
+
+  // Update active tab when path changes
+  useEffect(() => {
+    setActiveTab(getActiveTab());
+  }, [location.pathname]);
+
+  // Handle tab click
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    switch (value) {
+      case "home":
+        navigate("/student/home");
+        break;
+      case "restaurant":
+        navigate("/student/restaurant");
+        break;
+      case "cart":
+        navigate("/student/cart");
+        break;
+      case "orders":
+        navigate("/student/orders");
+        break;
+      case "history":
+        navigate("/student/history");
+        break;
+      case "profile":
+        navigate("/student/profile");
+        break;
+      default:
+        break;
     }
-  ];
+  };
 
   return (
-    <div className="min-h-screen bg-background p-3 sm:p-6">
-      <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
-        <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-between">
-          <div className="flex items-center gap-2 sm:gap-4">
-            <Link to="/" className="shrink-0">
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <div>
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text">Student Portal</h1>
-            <p className="text-sm sm:text-base text-muted-foreground pl-[2px]">Welcome back, John!</p>
-            </div>
-          </div>
+    <div className="flex flex-col min-h-screen bg-background">
+      <header className="sticky top-0 z-10 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <h1 className="text-xl font-bold">Qfree</h1>
           <div className="flex gap-2">
-            <Badge variant="secondary" className="hidden sm:flex items-center gap-1">
-              <MapPin className="w-3 h-3" />
-              <span>Block A</span>
-            </Badge>
-            {/* <Button size="sm" variant="outline" className="gap-1">
+            <Button variant="outline" size="sm" className="gap-1">
+              <MapPin className="w-4 h-4" />
+              <span className="hidden sm:inline">Block A</span>
+            </Button>
+            <Button variant="outline" size="sm" className="gap-1">
               <QrCode className="w-4 h-4" />
               <span className="hidden sm:inline">Scan QR</span>
-            </Button> */}
+            </Button>
           </div>
         </div>
+      </header>
 
-        <Tabs defaultValue="browse" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 h-auto p-1">
-            <TabsTrigger value="browse" className="text-xs sm:text-sm p-2">Browse</TabsTrigger>
-            <TabsTrigger value="cart" className="text-xs sm:text-sm p-2">
-              Cart ({cart.length})
-            </TabsTrigger>
-            <TabsTrigger value="orders" className="text-xs sm:text-sm p-2">Orders</TabsTrigger>
-            <TabsTrigger value="profile" className="text-xs sm:text-sm p-2">Profile</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="browse" className="mt-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-              {stalls.map((stall, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <CardHeader className="p-4">
-                    <div className="flex justify-between items-start gap-2">
-                      <div>
-                        <CardTitle className="text-base sm:text-lg">{stall.name}</CardTitle>
-                        <CardDescription>{stall.cuisine}</CardDescription>
-                      </div>
-                      <Badge variant="secondary" className="flex items-center gap-1">
-                        <Star className="w-3 h-3" />
-                        {stall.rating}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center text-xs text-muted-foreground mt-1">
-                      <Timer className="w-3 h-3 mr-1" />
-                      {stall.estimatedTime}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4 pt-0">
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-sm">Popular Items</h4>
-                      {stall.popular.slice(0, 2).map((item, i) => (
-                        <div key={i} className="flex justify-between items-center text-sm">
-                          <span className="truncate pr-2">{item}</span>
-                          <Button size="sm" variant="outline" className="h-7 w-7 p-0">
-                            <Plus className="w-3 h-3" />
-                          </Button>
-                        </div>
-                      ))}
-                      <Button className="w-full mt-2" size="sm">
-                        View Menu
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
+      {/* Main content area where nested routes will be rendered */}
+      <main className="flex-1 pb-16 overflow-auto">
+        <Outlet />
+      </main>
 
-          <TabsContent value="cart" className="mt-4">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ShoppingCart className="w-4 h-4" />
-                  Your Cart
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {cart.length > 0 ? (
-                  <div className="space-y-3">
-                    {cart.map((item) => (
-                      <div key={item.id} className="flex justify-between items-center p-3 border rounded-lg">
-                        <div>
-                          <h4 className="font-medium">{item.item}</h4>
-                          <p className="text-sm text-muted-foreground">{item.stall}</p>
-                        </div>
-                        <div className="text-right">
-                          <p>₹{item.price * item.quantity}</p>
-                          <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="space-y-3 mt-4">
-                      <div className="flex justify-between font-medium">
-                        <span>Total:</span>
-                        <span>₹{cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</span>
-                      </div>
-                      <Button className="w-full">
-                        <CreditCard className="w-4 h-4 mr-2" />
-                        Proceed to Pay
-                      </Button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <ShoppingCart className="w-8 h-8 mx-auto text-muted-foreground mb-2" />
-                    <p className="text-muted-foreground">Your cart is empty</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
+      {/* Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-10 shadow-lg">
+        <div className="flex justify-around items-center h-16 px-2">
+          {/* Home */}
+          <button
+            onClick={() => handleTabChange("home")}
+            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+              activeTab === "home"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary/80"
+            }`}
+          >
+            <Home className="h-6 w-6" />
+            <span className="text-xs mt-1">Home</span>
+          </button>
 
-          <TabsContent value="orders" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <History className="w-5 h-5 mr-2" />
-                  Order History
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {orderHistory.map((order) => (
-                    <div key={order.id} className="flex justify-between items-center p-4 border rounded-lg">
-                      <div>
-                        <h4 className="font-semibold">{order.items}</h4>
-                        <p className="text-sm text-muted-foreground">{order.stall} • {order.date}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-semibold">₹{order.total}</p>
-                        <Badge 
-                          variant={order.status === "Completed" ? "default" : "destructive"}
-                        >
-                          {order.status}
-                        </Badge>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+          {/* Restaurant */}
+          <button
+            onClick={() => handleTabChange("restaurant")}
+            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+              activeTab === "restaurant"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary/80"
+            }`}
+          >
+            <Utensils className="h-6 w-6" />
+            <span className="text-xs mt-1">Restaurants</span>
+          </button>
 
-          <TabsContent value="profile" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Profile Settings</CardTitle>
-                <CardDescription>Manage your account preferences</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-semibold">Name</label>
-                    <p className="text-muted-foreground">John Doe</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-semibold">Email</label>
-                    <p className="text-muted-foreground">john@university.edu</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-semibold">Student ID</label>
-                    <p className="text-muted-foreground">STU2024001</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-semibold">Campus</label>
-                    <p className="text-muted-foreground">Main Campus</p>
-                  </div>
-                </div>
-                <Button variant="outline" className="w-full">
-                  Edit Profile
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </div>
+          {/* Cart */}
+          <button
+            onClick={() => handleTabChange("cart")}
+            className={`flex flex-col items-center justify-center w-full h-full relative transition-colors ${
+              activeTab === "cart"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary/80"
+            }`}
+          >
+            <ShoppingCart className="h-6 w-6" />
+            <span className="text-xs mt-1">Cart</span>
+            <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              2
+            </span>
+          </button>
+
+          {/* Orders */}
+          <button
+            onClick={() => handleTabChange("orders")}
+            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+              activeTab === "orders"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary/80"
+            }`}
+          >
+            <History className="h-6 w-6" />
+            <span className="text-xs mt-1">Orders</span>
+          </button>
+
+          {/* History */}
+          <button
+            onClick={() => handleTabChange("history")}
+            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+              activeTab === "history"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary/80"
+            }`}
+          >
+            <History className="h-6 w-6" />
+            <span className="text-xs mt-1">History</span>
+          </button>
+
+          {/* Profile */}
+          <button
+            onClick={() => handleTabChange("profile")}
+            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+              activeTab === "profile"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary/80"
+            }`}
+          >
+            <User className="h-6 w-6" />
+            <span className="text-xs mt-1">Profile</span>
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };

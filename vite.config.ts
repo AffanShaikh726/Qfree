@@ -8,6 +8,17 @@ export default defineConfig(({ command }) => ({
   server: {
     host: "::",
     port: 8080,
+    strictPort: true,
+    proxy: {},
+    // Handle SPA fallback for all routes
+    fs: {
+      strict: true
+    },
+    // This ensures all routes are handled by index.html
+    hmr: {
+      protocol: 'ws',
+      host: 'localhost',
+    }
   },
   build: {
     outDir: "dist",
